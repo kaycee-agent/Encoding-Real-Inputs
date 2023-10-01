@@ -3,9 +3,6 @@
 
 # # Pipeline for Machine Learning Model
 
-# In[ ]:
-
-
 import argparse
 import openml
 import pandas as pd
@@ -26,9 +23,6 @@ from sklearn.metrics import accuracy_score, roc_auc_score, precision_score,mean_
 warnings.filterwarnings('ignore')
 
 
-# In[ ]:
-
-
 IdentityEncoding = FunctionTransformer(lambda x: x)
 hidden_size = ()
 
@@ -40,8 +34,6 @@ encoders = {'minmax':MinMaxScaler(),'scaler':StandardScaler(),
                 'identity':IdentityEncoding
            }
 
-
-# In[ ]:
 
 
 # List of results to create a dataframe
@@ -83,10 +75,10 @@ def run(X_train, y_train, X_test, y_test, model, encoder, task='classification')
     if task == 'classification':
         accuracy_train = accuracy_score(y_train,y_pred_train)
         #roc_train = roc_auc_score(y_train, y_pred_train)
-        precision_train =precision_score(y_train, y_pred_train, average='micro')
+        precision_train =precision_score(y_train, y_pred_train, average='weighted')
         accuracy_test = accuracy_score(y_test, y_pred_test) 
         #roc_test = roc_auc_score(y_test, y_pred_test)
-        precision_test =precision_score(y_test, y_pred_test, average='micro')
+        precision_test =precision_score(y_test, y_pred_test, average='weighted')
         new_row = {'Model': model,
         'Encoder': encoder,
         'Test Accuracy': accuracy_test,
@@ -120,9 +112,6 @@ def run(X_train, y_train, X_test, y_test, model, encoder, task='classification')
         print('Test RMSE', rmse_test)
     
     pass
-
-
-# In[ ]:
 
 
 if __name__ == "__main__":
@@ -279,7 +268,7 @@ if __name__ == "__main__":
     else:
         new_df = results_df
         new_df = new_df.sort_values(by=['Test Accuracy'], ascending=False)
-    new_df.to_csv(f'baseline_results_{args.dataset}', index=False)
+    new_df.to_csv(f"Results/baseline_results_{args.dataset}.csv", index=False)
 
-    print(f"Results saved to baseline_results_{args.dataset}")
+    print(f"Scores saved to Results folder as baseline_results_{args.dataset}.csv")
 
