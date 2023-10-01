@@ -3,8 +3,6 @@
 
 # # Pipeline for Machine Learning Model
 
-# In[ ]:
-
 
 import argparse
 import openml
@@ -39,9 +37,6 @@ for i in range(200, 0, -50):
 encoders = {'minmax':MinMaxScaler(),'scaler':StandardScaler(),  
                 'identity':IdentityEncoding
            }
-
-
-# In[ ]:
 
 
 # List of results to create a dataframe
@@ -83,10 +78,10 @@ def run(X_train, y_train, X_test, y_test, model, encoder, task='classification')
     if task == 'classification':
         accuracy_train = accuracy_score(y_train,y_pred_train)
         #roc_train = roc_auc_score(y_train, y_pred_train)
-        precision_train =precision_score(y_train, y_pred_train, average='micro')
+        precision_train =precision_score(y_train, y_pred_train, average='weighted')
         accuracy_test = accuracy_score(y_test, y_pred_test) 
         #roc_test = roc_auc_score(y_test, y_pred_test)
-        precision_test =precision_score(y_test, y_pred_test, average='micro')
+        precision_test =precision_score(y_test, y_pred_test, average='weighted')
         new_row = {'Model': model,
         'Encoder': encoder,
         'Test Accuracy': accuracy_test,
@@ -121,8 +116,6 @@ def run(X_train, y_train, X_test, y_test, model, encoder, task='classification')
     
     pass
 
-
-# In[ ]:
 
 
 if __name__ == "__main__":
