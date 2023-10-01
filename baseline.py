@@ -76,8 +76,10 @@ def run(X_train, y_train, X_test, y_test, model, encoder, task='classification')
         accuracy_train = accuracy_score(y_train,y_pred_train)
         #roc_train = roc_auc_score(y_train, y_pred_train)
         precision_train =precision_score(y_train, y_pred_train, average='weighted')
+        precision_train =precision_score(y_train, y_pred_train, average='weighted')
         accuracy_test = accuracy_score(y_test, y_pred_test) 
         #roc_test = roc_auc_score(y_test, y_pred_test)
+        precision_test =precision_score(y_test, y_pred_test, average='weighted')
         precision_test =precision_score(y_test, y_pred_test, average='weighted')
         new_row = {'Model': model,
         'Encoder': encoder,
