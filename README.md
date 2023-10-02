@@ -12,10 +12,10 @@ The datasets are fetched from OpenML and Scikit-Learn libraries
 |-------|-------|----|
 |House | house_16h|Regression|
 |Adult|adult|Classification|
-|Gesture|gesture|Classification|
+|Gesture Phase Segmentation Processed|gesture|Classification|
 |Microsoft|microsoft|Regression|
-|Covtype|covtype|Classification|
-|Otto|otto|Classification|
+|Cover type|covtype|Classification|
+|Otto Group Product|otto|Classification|
 |Santander|santander|Classification|
 |Higgs|higgs|Classification|
 |California Housing|california|Regression|

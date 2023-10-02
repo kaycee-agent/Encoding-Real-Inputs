@@ -3,11 +3,11 @@
 
 # # Pipeline for Machine Learning Model
 
+import warnings
 import argparse
 import openml
 import pandas as pd
 import numpy as np
-import warnings
 from sklearn.datasets import load_iris, fetch_california_housing
 from scipy import stats
 from sklearn.compose import ColumnTransformer
@@ -134,8 +134,10 @@ if __name__ == "__main__":
         print(f"Dataset name: {dataset.name}")
         print(f"Number of instances: {X.shape[0]}")
         print(f"Number of features: {X.shape[1]}")
-        df = pd.DataFrame(data=X, columns=dataset.features)
+        df = X
         df['target'] = y
+        cat_cols = df.select_dtypes(include='category').columns
+        df[cat_cols] = df[cat_cols].astype('object')
     elif args.dataset == 'adult':
         dataset_id = 1590
         # Download the dataset by its ID
