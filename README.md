@@ -16,7 +16,7 @@ The datasets are fetched from OpenML and Scikit-Learn libraries
 |Microsoft|microsoft|Regression|
 |Cover type|covtype|Classification|
 |Otto Group Product|otto|Classification|
-|Santander|santander|Classification|
+|Santander Customer Satisfaction|santander|Classification|
 |Higgs|higgs|Classification|
 |California Housing|california|Regression|
 
